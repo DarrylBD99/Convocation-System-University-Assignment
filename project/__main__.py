@@ -34,7 +34,7 @@ with app.app_context():
     admin = Administration(1, "admin", "#####@mail.com", "mmu")
     id = admin.admin_id
     
-    if (Administration.query.filter_by(admin_id = id).first()):
+    if (not Administration.query.filter_by(admin_id = id).first()):
         db.session.add(admin)
 
     db.session.commit()
