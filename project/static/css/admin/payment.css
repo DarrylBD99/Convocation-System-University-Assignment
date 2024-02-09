@@ -1,0 +1,15 @@
+#id{
+    width: 10%;
+}
+#amount{
+    width: 15%;
+}
+#date{
+    width: 25%;
+}
+#has_payed{
+    width: 20%;
+}
+#action{
+    width: 30%;
+}

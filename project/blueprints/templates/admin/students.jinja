@@ -1,0 +1,47 @@
+{% extends 'admin/page.jinja' %}
+
+{% block head %}
+    <title>Convocation Admin Panel - Accept Registeration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin/students.css') }}">
+{% endblock %}
+
+{% block header %}
+Students
+{% endblock %}
+
+{% block body_base %}
+    <div class = "content">
+        {% if students %}
+            <table>
+                <tr id="head">
+                    <th id="id">Student ID</th>
+                    <th id="name">Name</th>
+                    <th id="email">Email</th>
+                    <th id="phone_number">Phone No.</th>
+                    <th id="course">Course</th>
+                    <th id="action">Action</th>
+                </tr>
+                {% for student in students %}
+                    <tr>
+                        <td id="id">{{ student.student_id }}</td>
+                        <td id="name">{{ student.name }}</td>
+                        <td id="email">{{ student.email }}</td>
+                        <td id="phone_number">{{ student.phone_number }}</td>
+                        <td id="course">{{ student.course if student.course else "None" }}</td>
+                        <td id="action">
+                            {% if not student.registration %}
+                                <a href="send_invite/{{student.student_id}}">
+                                    Send Registration Form
+                                </a>
+                            {% else %}
+                                None
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+        {% else %}
+            <h3>No data found</h3>
+        {% endif %}
+    </div>
+{% endblock %}

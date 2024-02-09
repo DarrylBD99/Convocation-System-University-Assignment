@@ -1,0 +1,56 @@
+{% extends 'admin/page.jinja' %}
+
+{% block head %}
+    <title>Convocation Admin Panel - Payment Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin/payment.css') }}">
+{% endblock %}
+
+{% block header %}
+Payment Management
+{% endblock %}
+
+{% block body_base %}
+    <div class = "content">
+        {% if payment %}
+            <table>
+                <tr id="head">
+                    <th id="id">Student ID</th>
+                    <th id="amount">Amount</th>
+                    <th id="date">Billed Date</th>
+                    <th id="has_payed">Has Payed</th>
+                    <th id="action">Action</th>
+                </tr>
+                {% for student in registration %}
+                    {% if student.payment %}
+                        <tr>
+                            <td id="id">{{ student.student_id }}</td>
+                            <td id="amount">{{ student.payment.amount }}</td>
+                            <td id="date">{{ student.payment.date }}</td>
+                            <td id="has_payed">{{ "Yes" if student.payment.has_payed else "No" }}</td>
+                            <td id="action">
+                                {% if not student.payment.has_payed %}
+                                    {% if not student.payment.date %}
+                                        <a href="send_bill/{{student.student_id}}">
+                                            Send Bill
+                                        </a>
+                                    {% else %}
+                                        <a href="send_reminder/{{student.student_id}}">
+                                            Send Reminder
+                                        </a>
+                                    {% endif %}
+                                {% else %}
+                                    <a href="send_receipt/{{student.student_id}}">
+                                        Send Receipt
+                                    </a>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+                
+            </table>
+        {% else %}
+            <h3>No data found</h3>
+        {% endif %}
+    </div>
+{% endblock %}

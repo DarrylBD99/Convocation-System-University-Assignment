@@ -1,0 +1,166 @@
+body {
+    font-size: 18px;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+h1 {
+    font-size: 48px;
+    text-align: center;
+    font-family: serif;
+    text-decoration: underline;
+}
+
+h2 {
+    font-size: 36px;
+    margin-left : 2dvw;
+    font-family: serif;
+}
+
+h3 {
+    font-size: 24px;
+    margin: 1dvh 2dvw;
+}
+
+table {
+    border-collapse: collapse;
+    width: 90%;
+    margin-left:auto;
+    margin-right:auto;
+    text-align: center;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(odd) {
+    background-color: #D6EEEE;
+}
+
+#action_panel {
+    list-style-type: none;
+    display: inline-block;
+    overflow: hidden;
+}
+
+#action_panel li {
+    float: left;
+    overflow: auto;
+    background: #3399ff;
+    color: #000000;
+    height: 80px;
+    width: 160px;
+    padding: 10px;
+    margin: 8px;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#action_panel li:hover {
+    background: #175694;
+    color: white;
+}
+
+#action_panel a {
+    list-style-type: none;
+}
+
+#logout,#return_button {
+    margin: auto;
+}
+
+.header {
+    background-color: #d6d6d6;
+    display: flex;
+}
+
+.header_text {
+    width: 90dvw;
+}
+
+.header_text_2 {
+    width: 80dvw;
+}
+
+.flash_messages {
+    text-decoration: none;
+    width: 100dvw;
+    background-color: #a8a8a8;
+    margin: 0;
+}
+
+.flash_messages li {
+    list-style: none;
+}
+
+.content {
+    margin: 3dvh 0dvw;
+    flex: 1;
+}
+
+form {
+    padding: 2dvh 2dvw;
+    width: 96dvw;
+    font-family:Arial, Helvetica, sans-serif;
+    color: rgb(56, 56, 56);
+    background-color: rgb(233, 233, 233);
+}
+
+form .column {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+form input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+form input[type=number] {
+    width: 60%;
+    height: 40px;
+    margin: 0 20px;
+}
+
+form input[type=submit] {
+    text-align: center;
+}
+
+form textarea {
+    width: 100%;
+    height: 20dvh;
+    margin: 1dvh 0;
+}
+
+form select {
+    width: 50%;
+    height: 40px;
+    margin: 0 20px;
+}
+
+form .flex {
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+
+form .flex .column {
+    width: 50dvw;
+}
+
+form .flex .column_4 {
+    width: 25dvw;
+}
+
+form p {
+    font-size: 12px;
+    color: rgb(114, 114, 114);
+}

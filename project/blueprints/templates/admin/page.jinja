@@ -1,0 +1,10 @@
+{% extends 'base.jinja' %}
+
+{% block body %}
+    <div class = "header">
+        <a id="return_button" href="./">Return to Dashboard</a>
+        <h1 class="header_text_2">{% block header %}{% endblock %}</h1>
+        <a id="logout" href="./logout">Logout</a>
+    </div>
+    {% block body_base %}{% endblock %}
+{% endblock %}

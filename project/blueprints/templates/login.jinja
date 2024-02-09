@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Convocation Invitation Login</title>
+    <style>
+    .flash_messages {
+        text-decoration: none;
+        width: 100dvw;
+        background-color: #a8a8a8;
+        margin: 0;
+    }
+
+    .flash_messages li {
+        list-style: none;
+    }
+
+    body {
+      margin: 0;
+    }
+    </style>
+  </head>
+  <body>
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <ul class=flash_messages>
+          {% for message in messages %}
+            <li>{{ message }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    {% endwith %}
+    <center>
+        <h1>MMLS Login</h1>
+        <form method="post">
+            <input type="text" placeholder="Student ID" name="student_id">
+            <input type="submit" name="submit_button" value="Log In">
+        </form>
+    </center>
+  </body>
+</html>

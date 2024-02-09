@@ -1,0 +1,45 @@
+{% extends 'base.jinja' %}
+
+{% block head %}
+    <title>Convocation Invitation Form</title>
+{% endblock %}
+{% block body %}
+    <h1>Invitation Form</h1>
+    <form method="post" id="register_form">
+        <div class="flex">
+            <div class="column">
+                <label for="student_id"><b>Student ID</b></label>
+                <input type="text" value="{{ student.student_id }}" name="student_id" disabled>
+            </div>
+            <div class="column">
+                <label for="student_name"><b>Name</b></label>
+                <input type="text" value="{{ student.name }}" name="student_name" disabled>
+            </div>
+        </div>
+        
+        <div class="flex">
+            <div class="column">
+                <label for="seats"><b>Number of Seats</b></label>
+                <input type="number" name="seats" required>
+                <br>
+                <p>1 seat = MYR 30</p>
+            </div>
+            
+            <div class="column">
+                <label for="robe_size"><b>Robe Size</b></label>
+                <input type="number" name="robe_size" min="15" max="30">
+                <br>
+                <p>Leave empty if robe is not needed. Robe = MYR 20 (size 15-30 available)</p>
+            </div>
+        </div>
+        
+        <div class="column">
+            <label for="requests"><b>Requests</b></label>
+            <textarea rows="4" cols="50" name="requests" form="register_form"></textarea>
+            <p>Not compulsory: Fill in any special requests such as allergies, robe cutting requirements, etc.</p>
+        </div>
+
+        <input type="submit" name="submit_button" value="Submit Form">
+        <p>Payment bill will be sent to you after submission of form.</p>
+    </form>
+{% endblock %}

@@ -1,0 +1,87 @@
+{% extends 'admin/page.jinja' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin/acceptance.css') }}">
+    <title>Convocation Admin Panel - Accept Registeration</title>
+{% endblock %}
+
+{% block header %}
+Convocation Registeration
+{% endblock %}
+
+{% block body_base %}
+    <div class = "content">
+        {% if registration %}
+            <h2>Pending</h2>
+            {% if pending %}
+                <table>
+                    <tr id="head">
+                        <th id="id">Student ID</th>
+                        <th id="name">Name</th>
+                        <th id="course">Course</th>
+                        <th id="seats">No. of Seats</th>
+                        <th id="has_payed">Payed</th>
+                        <th id="has_robe">Has Robe</th>
+                        <th id="requests">Request</th>
+                        <th id="action">Action</th>
+                    </tr>
+                    {% for student in students %}
+                        {% if student.registration in pending %}
+                            <tr>
+                                <td id="id">{{ student.student_id }}</td>
+                                <td id="name">{{ student.name }}</td>
+                                <td id="course">{{ student.course if student.course else "None" }}</td>
+                                <td id="seats">{{ student.registration.number_of_seats }}</td>
+                                <td id="has_payed">{{ "Yes" if student.registration.payment.has_payed else "No" }}</td>
+                                <td id="has_robe">{{ "Yes" if student.registration.robe else "No" }}</td>
+                                <td id="requests">{{ student.registration.requests if student.registration.requests else "None" }}</td>
+                                <td id="action">
+                                    <a href="accept_registration/{{student.student_id}}"> Accept</a>
+                                    <br/>
+                                    <a href="decline_registration/{{student.student_id}}">Decline</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            {% else %}
+                <h3>No data found</h3>
+            {% endif %}
+            <h2>Accepted</h2>
+            {% if accepted %}
+                <table>
+                    <tr id="head">
+                        <th id="id">ID</th>
+                        <th id="name">Name</th>
+                        <th id="course">Course</th>
+                        <th id="seats">No. of Seats</th>
+                        <th id="has_payed">Payed</th>
+                        <th id="has_robe">Has Robe</th>
+                        <th id="requests">Request</th>
+                        <th id="action">Action</th>
+                    </tr>
+                    {% for student in students %}
+                        {% if student.registration in accepted %}
+                            <tr>
+                                <td id="id">{{ student.student_id }}</td>
+                                <td id="name">{{ student.name }}</td>
+                                <td id="course">{{ student.course if student.course else "None" }}</td>
+                                <td id="seats">{{ student.registration.number_of_seats }}</td>
+                                <td id="has_payed">{{ "Yes" if student.registration.payment.has_payed else "No" }}</td>
+                                <td id="has_robe">{{ "Yes" if student.registration.robe else "No" }}</td>
+                                <td id="requests">{{ student.registration.requests if student.registration.requests else "None" }}</td>
+                                <td id="action">
+                                    <a href="send_invitation/{{student.student_id}}">Send Invitation</a>
+                                </td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            {% else %}
+                <h3>No data found</h3>
+            {% endif %}
+        {% else %}
+            <h3>No data found</h3>
+        {% endif %}
+    </div>
+{% endblock %}

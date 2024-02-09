@@ -1,0 +1,49 @@
+{% extends 'admin/page.jinja' %}
+
+{% block head %}
+    <title>Convocation Admin Panel - Robe Management</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/admin/robe.css') }}">
+{% endblock %}
+
+{% block header %}
+Robe Management
+{% endblock %}
+
+{% block body_base %}
+    <div class="content">
+        {% if robe %}
+            <div class="column">
+                <h3>Students</h3>
+                <table>
+                    <tr id="head">
+                        <th id="id">Student ID</th>
+                        <th id="robe_size">Robe Size</th>
+                    </tr>
+                    {% for student in registration %}
+                        <tr>
+                            <td>{{ student.student_id }}</td>
+                            <td>{{ student.robe.robe_size }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+            <div class="column">
+                <h3>Total Robes</h3>
+                <table>
+                    <tr id="head">
+                        <th>Robe Size</th>
+                        <th>Quantity</th>
+                    </tr>
+                    {% for robe_size_quantity in robe_size_quantities %}
+                        <tr>
+                            <td id="id">{{ robe_sizes[loop.index - 1] }}</td>
+                            <td id="robe_size">{{ robe_size_quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% else %}
+            <h3>No data found</h3>
+        {% endif %}
+    </div>
+{% endblock %}
